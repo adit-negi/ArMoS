@@ -1,6 +1,6 @@
 from django.urls import path
 from django.contrib import admin
-from people.views import PersonListView, PersonCreateView, PersonUpdateView, homepage
+from people.views import PersonListView, PersonCreateView, PersonUpdateView, homepage, registerPage, loginPage, logoutUser
 from django.conf.urls.static import static
 from django.conf import settings
 
@@ -9,7 +9,10 @@ urlpatterns = [
     path('add/', PersonCreateView.as_view(), name='person_add'),
     path('<int:pk>/edit/', PersonUpdateView.as_view(), name='person_edit'),
     path('admin/', admin.site.urls),
-    path('home/', homepage, name='homepage')
+    path('home/', homepage, name='homepage'),
+    path('register', registerPage, name='register'),
+    path('login', loginPage, name='login'),
+    path('logout', logoutUser, name='logout')
 ]+static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 if settings.DEBUG:
     urlpatterns += static(settings.STATIC_URL,

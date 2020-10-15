@@ -4,7 +4,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Parallax Template - Materialize</title>
+    <title>Armos</title>
     <style>
       h1 {
         color: #00f4b7;
@@ -37,13 +37,59 @@
   <body>
     <nav class="black" role="navigation">
       <div class="nav-wrapper container">
-        <a id="logo-container" href="#" class="brand-logo">LOGO GOES HERE</a>
-        <ul class="right hide-on-med-and-down">
-          <li><a href="#">REGISTER a complaint</a></li>
+        <a id="logo-container" href="#" class="brand-logo">LOGO</a>
+        <ul class="right hide-on-med-and-down" id="navc">
+          {% if user.is_authenticated %}
+          <li>
+            <a data-toggle="modal" href="#" id="link"
+              ><b>Hello {{user.username}}</b></a
+            >
+          </li>
+          <li>
+            <a data-toggle="modal" href="/collection" id="link"
+              ><b>Your complaints</b></a
+            >
+          </li>
+          <li>
+            <a data-toggle="modal" href="/logout" id="link"><b>Logout</b></a>
+          </li>
+          {% else %}
+          <li>
+            <a data-toggle="modal" href="/register" id="link"
+              ><b>REGISTER</b></a
+            >
+          </li>
+          <li>
+            <a data-toggle="modal" href="/login" id="link"><b>LOGIN</b></a>
+          </li>
+          {% endif %}
         </ul>
 
         <ul id="nav-mobile" class="sidenav">
-          <li><a href="#">REGISTER a complaint</a></li>
+          {% if user.is_authenticated %}
+          <li>
+            <a data-toggle="modal" href="#" id="link"
+              ><b>Hello {{user.username}}</b></a
+            >
+          </li>
+          <li>
+            <a data-toggle="modal" href="/collection" id="link"
+              ><b>Your Collection</b></a
+            >
+          </li>
+          <li>
+            <a data-toggle="modal" href="/logout" id="link"><b>Logout</b></a>
+          </li>
+          {% else %}
+          <li>
+            <a data-toggle="modal" href="/register" id="link"
+              ><b>REGISTER</b></a
+            >
+          </li>
+          <li>
+            <a data-toggle="modal" href="/login" id="link"><b>LOGIN</b></a>
+          </li>
+          {% endif %}
         </ul>
         <a href="#" data-target="nav-mobile" class="sidenav-trigger"
           ><i class="material-icons">menu</i></a
@@ -74,7 +120,7 @@
       </div>
       <div class="parallax">
         <img
-          src="{% static 'background1.jpg' %}"
+          src="{% static 'photo1.jpg' %}"
           alt="Unsplashed background img 1"
         />
       </div>
@@ -141,7 +187,7 @@
       </div>
       <div class="parallax">
         <img
-          src="{% static 'background1.jpg' %}"
+          src="{% static 'photo2.jpg' %}"
           alt="Unsplashed background img 2"
         />
       </div>
@@ -180,7 +226,7 @@
       </div>
       <div class="parallax">
         <img
-          src="{% static 'background1.jpg' %}"
+          src="{% static 'photo3.jpg' %}"
           alt="Unsplashed background img 3"
         />
       </div>

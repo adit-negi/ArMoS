@@ -1,14 +1,25 @@
 {% extends 'base.html' %} {% load crispy_forms_tags %} {% block content %}
 {%load static %}
+<style>
+  body {
+    background-image: url("{% static 'form.jpg' %}");
+  }
+  #text {
+    color: white;
+  }
+  #total_expenses {
+    color: white;
+  }
+</style>
 
         <form method="post" novalidate enctype="multipart/form-data">
           {% csrf_token %}
           <div class="row">
-            <div class="col-6">{{ form.name|as_crispy_field }}</div>
+            <div class="col-6">{{ form.title|as_crispy_field }}</div>
             <div class="col-6">{{ form.email|as_crispy_field }}</div>
           </div>
-          <div>{{ form.phone_number|as_crispy_field}}</div>
-          <div>{{ form.problem_name|as_crispy_field }}</div>
+          <div>{{ form.problem_descrition|as_crispy_field}}</div>
+          <div>{{ form.location|as_crispy_field }}</div>
           <div>{{ form.problem_img|as_crispy_field }}</div>
           <button type="submit" class="btn btn-success">Save item</button>
         </form>
