@@ -1,0 +1,70 @@
+{% extends 'base.html' %} {% load crispy_forms_tags %} {% block content %}
+{%load static %}
+<style>
+  body {
+    background-image: url("{% static 'form.jpg' %}");
+  }
+  #text {
+    color: white;
+  }
+  #total_expenses {
+    color: white;
+  }
+</style>
+
+        <form method="post" novalidate enctype="multipart/form-data">
+          {% csrf_token %}
+          <div class="row">
+            <div class="col-6">{{ form.title|as_crispy_field }}</div>
+            <div class="col-6">{{ form.email|as_crispy_field }}</div>
+          </div>
+          <div>{{ form.problem_descrition|as_crispy_field}}</div>
+          <div>{{ form.location|as_crispy_field }}</div>
+          <div>{{ form.problem_img|as_crispy_field }}</div>
+            <head>
+              <title>Capture picture from your webcam</title>
+              <script
+                type="text/javascript"
+                src="https://cdnjs.cloudflare.com/ajax/libs/webcamjs/1.0.25/webcam.js"
+              ></script>
+            </head>
+
+            <body>
+              <div id="camera" style="height: auto; width: auto; text-align: left" hidden></div>
+
+              <!--FOR THE SNAPSHOT-->
+              <input
+                type="button"
+                value="Take a Snap"
+                id="btPic"
+                onclick="takeSnapShot()"
+              />
+              <p id="snapShot"></p>
+            </body>
+
+            <script>
+              // CAMERA SETTINGS.
+              Webcam.set({
+                width: 220,
+                height: 190,
+                image_format: "jpeg",
+                jpeg_quality: 100,
+              });
+              Webcam.attach("#camera");
+
+              // SHOW THE SNAPSHOT.
+              takeSnapShot = function () {
+                Webcam.snap(function (data_uri) {
+                  document.getElementById("snapShot").innerHTML =
+                    '<img src="' + data_uri + '" width="70px" height="50px" />';
+                });
+              };
+            </script>
+
+          <button type="submit" class="btn btn-success">Save item</button>
+        </form>
+      
+
+</html>
+
+{% endblock %}
