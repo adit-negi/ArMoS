@@ -15,7 +15,7 @@ class PersonForm(forms.ModelForm):
     class Meta:
         model = Person
         fields = ('title', 'email', 'problem_descrition',
-                  'location', 'problem_img')
+                  'location', 'problem_img', 'generated_title')
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)

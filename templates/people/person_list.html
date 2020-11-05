@@ -13,10 +13,10 @@
 <table class="table table-bordered" id="myTable">
   <thead>
     <tr>
-      <th>title</th>
-      <th>Email</th>
-      <th>problem_descrition</th>
-      <th>location</th>
+      <th>Title</th>
+      <th>Problem Descrition</th>
+      <th>Location</th>
+        <th>Status</th>
     </tr>
   </thead>
   <tbody>
@@ -25,9 +25,9 @@
       <td>
         <a href="{% url 'person_edit' person.pk %}">{{ person.title }}</a>
       </td>
-      <td>{{ person.email }}</td>
       <td>{{ person.problem_descrition }}</td>
       <td>{{person.location}}</td>
+    <td>Waiting Verification</td>
     </tr>
     {% empty %}
     <tr class="table-active">

@@ -22,7 +22,7 @@ class PersonListView(ListView):
 class PersonCreateView(CreateView):
     model = Person
     fields = ('title', 'email', 'problem_descrition',
-              'location', 'problem_img')
+              'location', 'problem_img', 'generated_title')
     success_url = reverse_lazy('reproblem')
 
 
